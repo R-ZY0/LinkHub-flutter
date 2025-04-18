@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "599020531493",
+    "project_id": "linkhub-515bf",
+    "storage_bucket": "linkhub-515bf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599020531493:android:ef23a48da6c849f5e6b4cc",
+        "android_client_info": {
+          "package_name": "com.example.linkhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCL8eQuduHCXpiiXSujRVCyl9pKH3H42I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
