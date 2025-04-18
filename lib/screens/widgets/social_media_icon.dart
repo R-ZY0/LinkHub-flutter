@@ -3,7 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ContactChanelCard extends StatelessWidget {
   String platform;
-  Uri url;
+ String url;
 
   ContactChanelCard({
     Key? key,
@@ -22,7 +22,8 @@ class ContactChanelCard extends StatelessWidget {
           elevation: 4,
           child: InkWell(
             onTap: () async {
-              await launchUrl(url, mode: LaunchMode.externalApplication);
+
+              await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
             },
             child: Image(
                 image: AssetImage(

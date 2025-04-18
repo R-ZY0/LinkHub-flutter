@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:linkhub/screens/crud/create_profile.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:linkhub/shared/themes/theme.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
          theme: appTheme,
-         home: Onboarding1Screen(),
+         home: MyNetworkScreen(),
       );
      
     

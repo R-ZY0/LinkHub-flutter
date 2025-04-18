@@ -12,3 +12,4 @@ export 'login/login_screen.dart';
 export 'login/forget_password_screen.dart';
 export 'login/reset_password_screen.dart';
 export 'login/singup_screen.dart';
+export 'crud/create_profile.dart';
