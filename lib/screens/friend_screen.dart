@@ -65,8 +65,9 @@ class FriendScreen extends StatelessWidget {
                   SizedBox(height: 10),
                   ActionButtonWithIcon(
                     title: 'Add to a groub',
+                    
                     icon: Icons.add,
-                    buttonColor: Colors.black,
+                    buttonColor: color2,
                     action: () {
                       showModalBottomSheet<void>(
                         backgroundColor: transparent,
@@ -98,7 +99,7 @@ class FriendScreen extends StatelessWidget {
                                         height: 12,
                                     
                                         decoration: BoxDecoration(
-                                          color: color4,
+                                          color: color8,
                                           borderRadius: BorderRadius.all(
                                             Radius.circular(9),
                                           ),
@@ -116,19 +117,19 @@ class FriendScreen extends StatelessWidget {
                                           child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              TextButton(onPressed: () {} , child: Text('Work',style: TextStyle(color: color4,fontSize: 30),),),
+                                              TextButton(onPressed: () {} , child: Text('Work',style: textStyleWhiteBold.merge(TextStyle(fontSize: 25)),),),
                                               SizedBox(height: 16,),
-                                              TextButton(onPressed: () {} , child: Text('Work',style: TextStyle(color: color4,fontSize: 30),),),
+                                              TextButton(onPressed: () {} , child: Text('Work',style: textStyleWhiteBold.merge(TextStyle(fontSize: 25)),),),
                                               SizedBox(height: 16,),
-                                              TextButton(onPressed: () {} , child: Text('Work',style: TextStyle(color: color4,fontSize: 30),),),
+                                              TextButton(onPressed: () {} , child: Text('Work',style: textStyleWhiteBold.merge(TextStyle(fontSize: 25)),),),
                                               SizedBox(height: 16,),
-                                              TextButton(onPressed: () {} , child: Text('Work',style: TextStyle(color: color4,fontSize: 30),),),
+                                              TextButton(onPressed: () {} , child: Text('Work',style: textStyleWhiteBold.merge(TextStyle(fontSize: 25)),),),
                                               SizedBox(height: 16,),
-                                              TextButton(onPressed: () {} , child: Text('Work',style: TextStyle(color: color4,fontSize: 30),),),
+                                              TextButton(onPressed: () {} , child: Text('Work',style: textStyleWhiteBold.merge(TextStyle(fontSize: 25)),),),
                                               SizedBox(height: 16,),
-                                              TextButton(onPressed: () {} , child: Text('Work',style: TextStyle(color: color4,fontSize: 30),),),
+                                              TextButton(onPressed: () {} , child: Text('Work',style: textStyleWhiteBold.merge(TextStyle(fontSize: 25)),),),
                                               SizedBox(height: 16,),
-                                              TextButton(onPressed: () {} , child: Text('Work',style: TextStyle(color: color4,fontSize: 30),),),
+                                              TextButton(onPressed: () {} , child: Text('Work',style: textStyleWhiteBold.merge(TextStyle(fontSize: 25)),),),
                                               SizedBox(height: 16,),
                                               
                                             ],

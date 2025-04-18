@@ -8,7 +8,7 @@ var appTheme = ThemeData(
     elevation: 0, // Removes shadow for a flat design
     centerTitle: true, // Centers the title
     titleTextStyle: TextStyle(
-      color: Colors.white70, // Use black for better contrast
+      color: textStyleWhiteBold.color, // Use black for better contrast
       fontSize: 24, // Slightly larger font size for emphasis
       fontWeight: FontWeight.w600, // Semi-bold for a clean look
       letterSpacing: 1.2, // Adds slight spacing for better readability
@@ -18,11 +18,11 @@ var appTheme = ThemeData(
     ),
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: color1,
+    backgroundColor: color7,
   ),
-  scaffoldBackgroundColor: color1,
+  scaffoldBackgroundColor: color9,
   textTheme: TextTheme(
-    displayLarge: textTheme1,
-    displayMedium: textTheme2,
+    displayLarge:textStyleWhiteBold ,
+    displayMedium: textStyleWhiteNormal,
   )
 );

@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
 
-var textTheme1 = TextStyle(
+// 1. Black and bold
+var textStyleBlackBold = TextStyle(
+  color: Colors.black,
+  fontSize: 16,
+  fontWeight: FontWeight.bold, // Bold
+);
+
+// 2. Black and normal
+var textStyleBlackNormal = TextStyle(
+  color: Colors.black,
+  fontSize: 16,
+  fontWeight: FontWeight.normal, // Normal weight
+);
+
+// 3. White and bold
+var textStyleWhiteBold = TextStyle(
   color: Colors.white,
   fontSize: 16,
-  fontWeight: FontWeight.w600, // Semi-bold
-  letterSpacing: 0.5,
+  fontWeight: FontWeight.bold, // Bold
 );
-var textTheme2 = TextStyle(
-  color: Colors.black, // full opacity
+
+// 4. White and normal
+var textStyleWhiteNormal = TextStyle(
+  color: Colors.white,
   fontSize: 16,
-  fontWeight: FontWeight.w600, // Semi-bold
+  fontWeight: FontWeight.normal, // Normal weight
 );

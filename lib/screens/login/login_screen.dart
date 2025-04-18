@@ -66,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                         borderSide: BorderSide(color: color4),
                       ),
                     ),
-                    style: textTheme1.merge(TextStyle(color: color5)),
+                    style: textStyleBlackBold.merge(TextStyle(color: color5)),
                   ),
                   SizedBox(height: 20),
 
@@ -110,14 +110,14 @@ class LoginScreen extends StatelessWidget {
                           borderSide: BorderSide(color: color4),
                         ),
                       ),
-                      style: textTheme1.merge(TextStyle(color: color4)),
+                      style: textStyleBlackNormal.merge(TextStyle(color: color4)),
                     ),
                   ),
 
                   SizedBox(height: 30),
                   ActionButton(
                     title: 'Login',
-                    style: textTheme1.merge(
+                    style: textStyleBlackBold.merge(
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     height: 50,
@@ -144,7 +144,7 @@ class LoginScreen extends StatelessWidget {
 
                   ActionButton(
                     title: 'Login with google',
-                    style: textTheme1.merge(
+                    style: textStyleWhiteBold.merge(
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     height: 50,
@@ -155,7 +155,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(height: 20),
                   ActionButton(
                     title: 'Login Facebook',
-                    style: textTheme1.merge(
+                    style: textStyleWhiteBold.merge(
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     height: 50,

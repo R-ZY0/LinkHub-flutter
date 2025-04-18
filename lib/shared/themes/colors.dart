@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 
 
 
-var color1=Color.fromARGB(255, 22, 15, 41);
-var colornav=Color.fromARGB(191, 22, 15, 41);
-var color2=Color.fromARGB(255, 36, 106, 115); 
-var color3=Color.fromARGB(255, 54, 143, 139); 
-var color4=Color.fromARGB(255, 243, 223, 193); 
-var color5=Color.fromARGB(255, 221, 190, 168); 
+var color1=Color.fromARGB(255, 216, 243, 220);
+var color2=Color.fromARGB(255, 183, 228, 199); 
+var color3=Color.fromARGB(255, 149, 213, 178); 
+var color4=Color.fromARGB(255, 116, 198, 157); 
+var color5=Color.fromARGB(255, 82, 183, 136);  
+var color6=Color.fromARGB(255, 64, 145, 108);  
+var color7=Color.fromARGB(255, 45, 106, 79);  
+var color8=Color.fromARGB(255, 27, 67, 50);  
+var color9=Color.fromARGB(255, 8, 28, 21);  
 var transparent=Colors.transparent;
+var colornav=Color.fromARGB(190, 45, 106, 79);

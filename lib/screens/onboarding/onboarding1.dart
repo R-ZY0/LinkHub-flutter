@@ -24,7 +24,7 @@ class Onboarding1Screen extends StatelessWidget {
               SizedBox(height: 50),
               Text(
                 "My LinkHub app is the \nbest app for connecting \nwith your friends and family",
-                style: textTheme1.merge(
+                style: textStyleWhiteBold.merge(
                   TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 textAlign: TextAlign.center,

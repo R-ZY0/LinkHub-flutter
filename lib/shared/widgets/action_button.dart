@@ -17,15 +17,15 @@ class ActionButton extends StatelessWidget {
       height: height,
       child: ElevatedButton(
         onPressed: action,
-        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(buttonColor ?? color4)),
-        child: Text(title, style: style ?? textTheme1),
+        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color4)),
+        child: Text(title, style: style ?? textStyleWhiteNormal),
       ),
     );
   }
 }
 
 class ActionButtonWithIcon extends StatelessWidget {
-  ActionButtonWithIcon({
+  ActionButtonWithIcon( {
     super.key,
     required this.title,
     required this.icon,
@@ -44,13 +44,13 @@ class ActionButtonWithIcon extends StatelessWidget {
         ElevatedButton.icon(
           onPressed: action,
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(buttonColor ?? color4),
+            backgroundColor: MaterialStateProperty.all(buttonColor ?? color5),
             textStyle: WidgetStateProperty.all(
-              textTheme1.merge(TextStyle(color: color4)),
+              textStyleWhiteNormal.merge(TextStyle(fontSize: 16, color: color5)),
             ),
           ),
           icon: Icon(icon, color: Colors.white),
-          label: Text(title, style: textTheme1),
+          label: Text(title, style: textStyleWhiteNormal),
         ),
       ],
     );

@@ -14,47 +14,52 @@ class HomeScreen extends StatelessWidget {
 var phoneNumber = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Home"),
-      automaticallyImplyLeading: false,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: phoneNumber,
-                keyboardType: TextInputType.phone,
-                cursorColor: color4,
-                decoration: InputDecoration(
-                  label:Text("Enter the phone number ") ,
-                  prefixIcon: Icon(Icons.phone, color: color4),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: color4),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(title: Text("Home"),
+        automaticallyImplyLeading: false,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  controller: phoneNumber,
+                  keyboardType: TextInputType.phone,
+                  cursorColor: color3,
+                  decoration: InputDecoration(
+                    label:Text("Enter the phone number ",style: TextStyle(color: color2),) ,
+                    prefixIcon: Icon(Icons.phone, color: color3),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(color: color2),
+                    ),
+                  ),
+                  style: textStyleBlackBold.merge(
+                    TextStyle(color: color3),
                   ),
                 ),
-                style: textTheme1.merge(
-                  TextStyle(color: color4),
+                SizedBox(height: 30),
+                ActionButtonWithIcon(
+                  title: "Search",
+                  icon: Icons.search,
+                  action: () {
+                    print("Searching for ${phoneNumber.text}");
+                    // goto(context, Onboarding1Screen());
+                  },
                 ),
-              ),
-              SizedBox(height: 30),
-              ActionButtonWithIcon(
-                title: "Search",
-                icon: Icons.search,
-                action: () {
-                  print("Searching for ${phoneNumber.text}");
-                  // goto(context, Onboarding1Screen());
-                },
-              ),
-            ],
+              ],
+            ),
           ),
         ),
+        bottomNavigationBar: BottomNavBar(),
+        extendBody: true,
       ),
-      bottomNavigationBar: BottomNavBar(),
-      extendBody: true,
     );
   }
 }

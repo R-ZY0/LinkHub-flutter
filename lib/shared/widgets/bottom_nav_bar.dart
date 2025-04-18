@@ -20,7 +20,7 @@ class BottomNavBar extends StatelessWidget {
       child: BottomNavigationBar(
         backgroundColor: colornav,
       
-        selectedItemColor: selectedItemColor ?? color4,
+        selectedItemColor: selectedItemColor ?? color2,
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.house), label: ''),

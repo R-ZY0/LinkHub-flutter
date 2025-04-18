@@ -56,7 +56,7 @@ class SinupScreen extends StatelessWidget {
                           borderSide: BorderSide(color: color4),
                         ),
                       ),
-                      style: textTheme1.merge(TextStyle(color: color5)),
+                      style: textStyleWhiteNormal.merge(TextStyle(color: color5)),
                     ),
                     SizedBox(height: 20),
                     StatefulBuilder(
@@ -103,7 +103,7 @@ class SinupScreen extends StatelessWidget {
                             borderSide: BorderSide(color: color4),
                           ),
                         ),
-                        style: textTheme1.merge(TextStyle(color: color4)),
+                        style: textStyleWhiteNormal.merge(TextStyle(color: color4)),
                       ),
                     ),
                     SizedBox(height: 20),
@@ -150,13 +150,13 @@ class SinupScreen extends StatelessWidget {
                             borderSide: BorderSide(color: color4),
                           ),
                         ),
-                        style: textTheme1.merge(TextStyle(color: color4)),
+                        style: textStyleWhiteNormal.merge(TextStyle(color: color4)),
                       ),
                     ),
                     SizedBox(height: 20),
                      ActionButton(
                       title: 'SignUp',
-                      style: textTheme1.merge(
+                      style: textStyleBlackBold.merge(
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                       ),
                       height: 50,
@@ -174,7 +174,7 @@ class SinupScreen extends StatelessWidget {
                     SizedBox(height: 20),
                     ActionButton(
                     title: 'Signup with google',
-                    style: textTheme1.merge(
+                    style: textStyleWhiteBold.merge(
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     height: 50,
@@ -185,7 +185,7 @@ class SinupScreen extends StatelessWidget {
                   SizedBox(height: 20),
                   ActionButton(
                     title: 'Signup with Facebook',
-                    style: textTheme1.merge(
+                    style: textStyleWhiteBold.merge(
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     height: 50,

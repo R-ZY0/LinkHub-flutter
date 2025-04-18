@@ -13,10 +13,10 @@ class ContactCard extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Mohamed Ramzy", style: textTheme1.copyWith(fontSize: 20)),
+            Text("Mohamed Ramzy", style: textStyleBlackBold.copyWith(fontSize: 20)),
             Text(
               "+201015286683",
-              style: textTheme1.merge(TextStyle(color: Colors.grey)),
+              style: textStyleWhiteBold.merge(TextStyle(color: Colors.grey)),
             ),
           ],
         ),

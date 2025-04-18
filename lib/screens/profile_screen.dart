@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:linkhub/shared/themes/text.dart';
 import 'package:linkhub/shared/widgets/action_button.dart';
 import 'package:linkhub/shared/widgets/back_button.dart';
 import 'package:linkhub/shared/widgets/bottom_nav_bar.dart';
@@ -56,10 +57,10 @@ class ProfileScreen extends StatelessWidget {
                   SizedBox(height: 15),
                   Text(
                     'Mohamed Ramzy',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                    style: textStyleWhiteBold.merge(
+                      TextStyle(
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                   SizedBox(height: 10),

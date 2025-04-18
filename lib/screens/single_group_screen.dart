@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkhub/screens/my_network_screen.dart';
 import 'package:linkhub/shared/themes/colors.dart';
+import 'package:linkhub/shared/widgets/back_button.dart';
 import 'package:linkhub/shared/widgets/bottom_nav_bar.dart';
 
 class SingleGroupScreen extends StatelessWidget {
@@ -9,7 +10,10 @@ class SingleGroupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Single Group')),
+      appBar: AppBar(title: Text('Single Group'),
+       leading: MyBackButton(),
+      ),
+      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
