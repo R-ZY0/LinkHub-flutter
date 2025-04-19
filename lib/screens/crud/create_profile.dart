@@ -1,30 +1,24 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:linkhub/screens/crud/create_profile.dart';
-import 'package:linkhub/screens/login/singup_screen.dart';
-import 'package:linkhub/screens/screens.dart';
-import 'package:linkhub/shared/methods/navigation.dart';
+import 'package:linkhub/services/services.dart';
 import 'package:linkhub/shared/themes/colors.dart';
 import 'package:linkhub/shared/themes/text.dart';
 import 'package:linkhub/shared/widgets/action_button.dart';
 import 'package:linkhub/shared/widgets/back_button.dart';
 
-import '../../services/services.dart';
 
 class CreateProfileScrean extends StatelessWidget {
-  CreateProfileScrean({super.key});
+  
   final name = TextEditingController();
 
   final phone = TextEditingController();
-
+String  userId;
   final formKey = GlobalKey<FormState>();
 
   final PhnoeNumberNode = FocusNode();
 
   bool isPhoneNumber = true;
-
+CreateProfileScrean({super.key ,required this.userId});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -133,15 +127,12 @@ class CreateProfileScrean extends StatelessWidget {
                       
                           FocusScope.of(context).requestFocus(FocusNode());
                         
-                      if (formKey.currentState?.validate() ?? false) {
-                        // createNewUser(
-                        //   name: name.text,
-                        //   phone: phone.text,
-                        //   context: context
-                        // );
-                       FireBaseServices(). getUser();
-                       
-                      }
+                      FireBaseServices().createNewUser(
+                        uid: userId,
+                         name: name.text,
+                          phone: phone.text,
+                            context: context,
+                          );
                     },
                   ),
                 ],

@@ -17,7 +17,7 @@ class ActionButton extends StatelessWidget {
       height: height,
       child: ElevatedButton(
         onPressed: action,
-        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color4)),
+        style: ButtonStyle(backgroundColor: WidgetStateProperty.all(color4)),
         child: Text(title, style: style ?? textStyleWhiteNormal),
       ),
     );
@@ -44,7 +44,7 @@ class ActionButtonWithIcon extends StatelessWidget {
         ElevatedButton.icon(
           onPressed: action,
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(buttonColor ?? color5),
+            backgroundColor: WidgetStateProperty.all(buttonColor ?? color5),
             textStyle: WidgetStateProperty.all(
               textStyleWhiteNormal.merge(TextStyle(fontSize: 16, color: color5)),
             ),

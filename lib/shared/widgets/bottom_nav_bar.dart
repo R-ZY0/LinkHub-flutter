@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:linkhub/screens/home_screen.dart';
-import 'package:linkhub/screens/my_network_screen.dart';
 import 'package:linkhub/screens/screens.dart';
 import 'package:linkhub/shared/methods/navigation.dart';
 import 'package:linkhub/shared/themes/colors.dart';

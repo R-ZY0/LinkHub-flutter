@@ -7,3 +7,11 @@ Navigator.push(
               );
 
 }
+
+void gotoWithNoBackButton(  BuildContext context,  Widget screen){
+Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder:(context) => screen),
+              );
+
+}
