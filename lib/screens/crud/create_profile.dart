@@ -224,7 +224,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                           name: name.text.trim(),
                           phone: phone.text.trim(),
                           context: context,
-                          profileImage: _image,
+                          profileImage: _image ?? XFile(''),
                           socialMediaPlatforms: {
                             'github': githubController.text.trim(),
                             'facebook': facebookController.text.trim(),

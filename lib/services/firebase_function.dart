@@ -18,7 +18,7 @@ class FireBaseServices {
     required String phone,
     context,
     required Map<String, dynamic> socialMediaPlatforms,
-      XFile? profileImage, // Added profileImage parameter
+     required XFile profileImage, // Added profileImage parameter
 
   }) async {
     var ref = userRef.doc(uid);
