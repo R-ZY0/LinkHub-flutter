@@ -9,7 +9,7 @@ import 'package:linkhub/shared/widgets/back_button.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:file_picker/file_picker.dart';
 import 'dart:io';
-import 'package:image_picker/image_picker.dart'; // Only for XFile class
+import 'package:image_picker/image_picker.dart';
 
 class CreateProfileScreen extends StatefulWidget {
   final String userId;
@@ -34,9 +34,13 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
   String? githubAvatarUrl;
   XFile? _image;
 
-  // Using file_picker instead of image_picker
   Future<void> _pickImage() async {
-    if (await Permission.storage.request().isGranted) {
+    var permission = await Permission.storage.status;
+    if (!permission.isGranted) {
+      permission = await Permission.photos.request(); // fallback for iOS or Android 13+
+    }
+
+    if (permission.isGranted) {
       final result = await FilePicker.platform.pickFiles(
         type: FileType.image,
         allowMultiple: false,
@@ -79,7 +83,6 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
               key: formKey,
               child: Column(
                 children: [
-                  // Show image if selected
                   if (_image != null)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20),
@@ -103,11 +106,11 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                   ),
                   SizedBox(height: 20),
 
-                  // Name Field
+                  // Name
                   TextFormField(
+                    controller: name,
                     onFieldSubmitted: (_) =>
                         FocusScope.of(context).requestFocus(phoneNumberNode),
-                    controller: name,
                     validator: (value) =>
                         value == null || value.isEmpty ? 'Please enter your name' : null,
                     cursorColor: color4,
@@ -116,23 +119,22 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                       prefixIcon: Icon(Icons.person, color: color4),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(color: color4),
                       ),
                     ),
                     style: textStyleBlackBold.merge(TextStyle(color: color5)),
                   ),
                   SizedBox(height: 20),
 
-                  // Phone Field
+                  // Phone
                   TextFormField(
                     keyboardType: TextInputType.number,
-                    focusNode: phoneNumberNode,
                     controller: phone,
+                    focusNode: phoneNumberNode,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     validator: (value) {
                       if (value == null || value.isEmpty) return 'Please enter your phone number';
                       if (!RegExp(r'^\d+$').hasMatch(value)) {
-                        return 'Please enter a valid phone number (numbers only)';
+                        return 'Phone number must contain digits only';
                       }
                       return null;
                     },
@@ -142,30 +144,28 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                       prefixIcon: Icon(Icons.phone, color: color4),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(color: color3),
                       ),
                     ),
                     style: textStyleBlackNormal.merge(TextStyle(color: color4)),
                   ),
                   SizedBox(height: 20),
 
-                  // GitHub Username Field
+                  // GitHub
                   TextFormField(
                     controller: githubController,
-                    onChanged: (value) => updateGitHubAvatar(value),
+                    onChanged: updateGitHubAvatar,
                     decoration: InputDecoration(
                       label: Text("GitHub Username", style: TextStyle(color: color4)),
                       prefixIcon: FaIcon(FontAwesomeIcons.github, color: Colors.black),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(color: color4),
                       ),
                     ),
                     style: textStyleBlackNormal.merge(TextStyle(color: color5)),
                   ),
                   SizedBox(height: 20),
 
-                  // Facebook URL Field
+                  // Facebook
                   TextFormField(
                     controller: facebookController,
                     decoration: InputDecoration(
@@ -173,14 +173,13 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                       prefixIcon: FaIcon(FontAwesomeIcons.facebook, color: Colors.blue),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(color: color4),
                       ),
                     ),
                     style: textStyleBlackNormal.merge(TextStyle(color: color5)),
                   ),
                   SizedBox(height: 20),
 
-                  // Twitter URL Field
+                  // Twitter
                   TextFormField(
                     controller: twitterController,
                     decoration: InputDecoration(
@@ -188,14 +187,13 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                       prefixIcon: FaIcon(FontAwesomeIcons.twitter, color: Colors.lightBlue),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(color: color4),
                       ),
                     ),
                     style: textStyleBlackNormal.merge(TextStyle(color: color5)),
                   ),
                   SizedBox(height: 20),
 
-                  // LinkedIn URL Field
+                  // LinkedIn
                   TextFormField(
                     controller: linkedinController,
                     decoration: InputDecoration(
@@ -203,14 +201,13 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
                       prefixIcon: FaIcon(FontAwesomeIcons.linkedin, color: Colors.blueAccent),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(color: color4),
                       ),
                     ),
                     style: textStyleBlackNormal.merge(TextStyle(color: color5)),
                   ),
                   SizedBox(height: 30),
 
-                  // Submit Button
+                  // Submit
                   ActionButton(
                     title: 'Create User',
                     style: textStyleBlackBold.merge(

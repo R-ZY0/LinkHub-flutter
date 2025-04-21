@@ -14,7 +14,7 @@ class Auth {
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((value) {
-        gotoWithNoBackButton(context, CreateProfileScrean(userId: value.user!.uid));
+        gotoWithNoBackButton(context, CreateProfileScreen(userId: value.user!.uid));
       });
     } on FirebaseAuthException catch (e) {
       String message = '';

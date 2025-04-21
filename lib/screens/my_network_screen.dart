@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkhub/screens/friend_screen.dart';
+import 'package:linkhub/screens/widgets/contact_card.dart';
 import 'package:linkhub/shared/methods/navigation.dart';
 import 'package:linkhub/shared/themes/colors.dart';
 import 'package:linkhub/shared/themes/text.dart';
@@ -16,41 +17,21 @@ class MyNetworkScreen extends StatelessWidget {
         title: Text('My Network'),
         leading: MyBackButton(),
       ),
-
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-              ContactCard(),
-              SizedBox(height: 20),
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: ListView.separated(
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context, index) {
+            return ContactCard();
+          },
+          separatorBuilder: (context, index) {
+            return Divider(
+              color: color3, // Customize the divider color
+              thickness: 1.5, // Customize the thickness
+              height: 20, // Space between items
+            );
+          },
+          itemCount: 10, // Replace with the actual number of contacts
         ),
       ),
       bottomNavigationBar: BottomNavBar(),
@@ -59,32 +40,3 @@ class MyNetworkScreen extends StatelessWidget {
   }
 }
 
-class ContactCard extends StatelessWidget {
-  const ContactCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        goto(context, FriendScreen());
-
-      },
-      child: Row(
-        children: [
-          CircleAvatar(radius: 40, backgroundImage: AssetImage('assets/f1.jpg')),
-          SizedBox(width: 20),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Mohamed Ramzy", style: textStyleWhiteBold.copyWith(fontSize: 20)),
-              Text(
-                "+201015286683",
-                style: textStyleWhiteBold.merge(TextStyle(color: Colors.grey)),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}

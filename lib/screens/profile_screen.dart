@@ -16,12 +16,10 @@ class ProfileScreen extends StatelessWidget {
 
   final Map myContacts = {
     'whatsapp': Uri.parse('https://wa.me/201015286683'),
-    'facebook': Uri.parse(
-      'https://www.facebook.com/profile.php?id=100078818844136',
-    ),
+    'facebook': Uri.parse('https://www.facebook.com/profile.php?id=100078818844136'),
     'youtube': Uri.parse('https://youtu.be/PfUDT5LOKUE?si=Z3Eli4PuFKtkpPok'),
     'github': Uri.parse('https://github.com/R-ZY0'),
-    'linkedin': Uri.parse('www.linkedin.com/in/mohammed-ramzi'),
+    'linkedin': Uri.parse('https://www.linkedin.com/in/mohammed-ramzi'),
     'pinterest': Uri.parse('https://pin.it/5P0ikG3X4'),
     'snapchat': Uri.parse('https://www.snapchat.com/'),
     'instagram': Uri.parse('https://www.instagram.com/abdelrahman_adel745/'),
