@@ -23,6 +23,7 @@ class MyUser {
       'myNetwork': myNetwork
     };
   }
+  
   MyUser fromMap(Map<String, dynamic> myData) {
   return MyUser(
     name: myData['name'] ?? '',

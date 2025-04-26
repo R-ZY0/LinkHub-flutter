@@ -56,3 +56,37 @@ class ActionButtonWithIcon extends StatelessWidget {
     );
   }
 }
+class ActionButtonWithIconHome extends StatelessWidget {
+  ActionButtonWithIconHome({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.action,
+    this.buttonColor,
+  });
+
+  String title;
+  IconData icon;
+  VoidCallback action;
+  Color? buttonColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ElevatedButton.icon(
+          onPressed: action,
+          style: ButtonStyle(
+            backgroundColor: WidgetStateProperty.all(buttonColor ?? color5),
+            textStyle: WidgetStateProperty.all(
+              textStyleWhiteNormal.merge(TextStyle(fontSize: 16, color: Colors.white)), // Text color changed
+            ),
+          ),
+          icon: Icon(icon, color: Colors.white),
+          label: Text(title, style: textStyleWhiteNormal),
+        ),
+      ],
+    );
+  }
+}

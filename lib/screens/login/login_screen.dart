@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linkhub/screens/login/singup_screen.dart';
+import 'package:linkhub/services/auth_services.dart';
 import 'package:linkhub/shared/themes/colors.dart';
 import 'package:linkhub/shared/themes/text.dart';
 import 'package:linkhub/shared/widgets/action_button.dart';
@@ -125,8 +126,12 @@ class LoginScreen extends StatelessWidget {
                     buttonWidth: double.infinity,
                     action: () {
                       if (formKey.currentState?.validate() ?? false) {
-                        print(email.text);
-                        print(pas.text);
+                        Auth().loginUser(
+                              email: email.text,
+                              password: pas.text,
+                              context: context,
+                            );
+                       
                       }
                     },
                   ),

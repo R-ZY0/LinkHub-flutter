@@ -53,14 +53,14 @@ class FireBaseServices {
     goto(context, ProfileScreen());
   }
 
-  // Fetch user by UID (for example, get current user details)
-  Future<MyUser> getUser() async {
-    var ref = userRef.doc('toe7Jv3B7B8Yr1nYid8W'); // Example UID
-    var myData = await ref.get();
-    var theTrueData = MyUser().fromMap(myData.data() ?? {});
+  
+  // Future<MyUser> getUser() async {
+  //   var ref = userRef.doc('toe7Jv3B7B8Yr1nYid8W'); // Example UID
+  //   var myData = await ref.get();
+  //   var theTrueData = MyUser().fromMap(myData.data() ?? {});
 
-    return theTrueData;
-  }
+  //   return theTrueData;
+  // }
 
   // Fetch user by ID (useful for network/friends screen)
   Future<MyUser> getUserById(String id) async {
