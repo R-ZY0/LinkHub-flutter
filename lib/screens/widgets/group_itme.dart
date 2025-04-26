@@ -3,6 +3,7 @@ import 'package:linkhub/screens/single_group_screen.dart';
 import 'package:linkhub/shared/methods/navigation.dart';
 import 'package:linkhub/shared/themes/colors.dart';
 
+// GroupItem represents a clickable card for a group
 class GroupItem extends StatelessWidget {
   const GroupItem({super.key});
 
@@ -10,10 +11,12 @@ class GroupItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        // Navigate to the SingleGroupScreen when the card is tapped
         goto(context, SingleGroupScreen());
       },
       child: Stack(
         children: [
+          // Background container with group image
           Container(
             height: 150,
             width: 150,
@@ -21,22 +24,23 @@ class GroupItem extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.5),
+                  Colors.black.withOpacity(0.5), // Dark overlay on image
                   BlendMode.darken,
                 ),
-                image: AssetImage('assets/mj.jpg'),
-                fit: BoxFit.fill,       
+                image: AssetImage('assets/mj.jpg'), // Group image
+                fit: BoxFit.fill, // Fill the container fully
               ),
-              borderRadius: BorderRadius.circular(39),
+              borderRadius: BorderRadius.circular(39), // Rounded corners
             ),
           ),
+          // Centered group name text
           Center(
             child: Text(
-              'Group Name',
+              'Group Name', // Placeholder for group name
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: color4,
+                color: color4, // Text color from shared theme
               ),
             ),
           )
