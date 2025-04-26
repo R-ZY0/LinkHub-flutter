@@ -12,78 +12,93 @@ import 'package:linkhub/shared/widgets/bottom_nav_bar.dart';
 
 import 'screens.dart';
 
+// HomeScreen widget
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
+
+  // Controller for the phone number input
   var phoneNumber = TextEditingController();
+
+  // Firestore instance
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      // Hide the keyboard when tapping outside input fields
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        appBar: AppBar(title: Text("Home"), automaticallyImplyLeading: false),
+        // App bar with title
+        appBar: AppBar(
+          title: Text("Home"),
+          automaticallyImplyLeading: false, // No default back button
+        ),
+
+        // Main body
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                // TextFormField to enter phone number
                 StatefulBuilder(
-                  builder:
-                      (context, setState) => TextFormField(
-                        controller: phoneNumber,
-                        keyboardType: TextInputType.number, // Numeric keyboard
-                        inputFormatters: [
-                          FilteringTextInputFormatter
-                              .digitsOnly, // Allow only digits
-                          LengthLimitingTextInputFormatter(
-                            11,
-                          ), // Restrict input to 11 digits
-                        ],
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your phone number';
-                          }
-                          if (value.length != 11) {
-                            return 'Phone number must be 11 digits';
-                          }
-                          return null;
-                        },
-                        cursorColor: color4,
-                        decoration: InputDecoration(
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide(color: color4),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide(color: color4),
-                          ),
-                          label: Text(
-                            "Enter the phone number ",
-                            style: TextStyle(color: color4),
-                          ),
-                          prefixIcon: Icon(Icons.phone, color: color4),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide: BorderSide(color: color3),
-                          ),
-                        ),
-                        style: textStyleBlackNormal.merge(
-                          TextStyle(color: color4),
-                        ),
+                  builder: (context, setState) => TextFormField(
+                    controller: phoneNumber,
+                    keyboardType: TextInputType.number, // Only numbers allowed
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly, // Only digits
+                      LengthLimitingTextInputFormatter(11), // Max 11 digits
+                    ],
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your phone number';
+                      }
+                      if (value.length != 11) {
+                        return 'Phone number must be 11 digits';
+                      }
+                      return null;
+                    },
+                    cursorColor: color4,
+                    decoration: InputDecoration(
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(color: color4),
                       ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(color: color4),
+                      ),
+                      label: Text(
+                        "Enter the phone number",
+                        style: TextStyle(color: color4),
+                      ),
+                      prefixIcon: Icon(Icons.phone, color: color4),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(color: color3),
+                      ),
+                    ),
+                    style: textStyleBlackNormal.merge(
+                      TextStyle(color: color4),
+                    ),
+                  ),
                 ),
+
                 SizedBox(height: 30),
+
+                // Action button to search for the phone number
                 ActionButtonWithIconHome(
                   title: "Search",
                   icon: Icons.search,
                   action: () async {
                     final enteredPhoneNumber = phoneNumber.text.trim();
 
+                    // Validate phone number length
                     if (enteredPhoneNumber.length == 11) {
+                      // Show searching snackbar
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
@@ -99,14 +114,16 @@ class HomeScreen extends StatelessWidget {
                         ),
                       );
 
+                      // Simulate loading
                       await Future.delayed(Duration(seconds: 3));
 
-                      final querySnapshot =
-                          await _firestore
-                              .collection('users')
-                              .where('phone', isEqualTo: enteredPhoneNumber)
-                              .get();
+                      // Query Firestore for the phone number
+                      final querySnapshot = await _firestore
+                          .collection('users')
+                          .where('phone', isEqualTo: enteredPhoneNumber)
+                          .get();
 
+                      // If user found
                       if (querySnapshot.docs.isNotEmpty) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -123,9 +140,12 @@ class HomeScreen extends StatelessWidget {
                           ),
                         );
 
+                        // Wait a bit then navigate to FriendScreen
                         await Future.delayed(Duration(seconds: 1));
                         goto(context, FriendScreen());
+
                       } else {
+                        // If user not found
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
@@ -142,6 +162,7 @@ class HomeScreen extends StatelessWidget {
                         );
                       }
                     } else {
+                      // If phone number is not valid
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
@@ -163,7 +184,11 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
+
+        // Bottom navigation bar
         bottomNavigationBar: BottomNavBar(),
+
+        // Extend body to allow floating nav bar design
         extendBody: true,
       ),
     );

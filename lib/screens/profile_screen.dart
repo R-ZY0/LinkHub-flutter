@@ -1,4 +1,3 @@
-
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:linkhub/shared/themes/text.dart';
@@ -10,10 +9,14 @@ import 'package:url_launcher/url_launcher.dart';
 import '../shared/themes/colors.dart';
 import 'widgets/screens_widgrts.dart';
 
+// Profile Screen widget
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
+
+  // Phone number URI to make calls
   final Uri phoneNumber = Uri.parse('tel:+201288220410');
 
+  // Map containing various social media and contact links
   final Map myContacts = {
     'whatsapp': Uri.parse('https://wa.me/201015286683'),
     'facebook': Uri.parse('https://www.facebook.com/profile.php?id=100078818844136'),
@@ -29,6 +32,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      // Ensures content is not hidden behind system UI
       bottom: true,
       left: true,
       top: true,
@@ -38,9 +42,10 @@ class ProfileScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Profile'),
-          leading: MyBackButton(),
+          leading: MyBackButton(), // Custom back button
         ),
 
+        // Main Body
         body: Container(
           width: double.infinity,
           child: SingleChildScrollView(
@@ -49,11 +54,15 @@ class ProfileScreen extends StatelessWidget {
               padding: const EdgeInsets.all(5.0),
               child: Column(
                 children: [
+                  // Profile picture
                   CircleAvatar(
                     backgroundImage: AssetImage('assets/f1.jpg'),
                     radius: 100,
                   ),
+
                   SizedBox(height: 15),
+
+                  // Profile name
                   Text(
                     'Mohamed Ramzy',
                     style: textStyleWhiteBold.merge(
@@ -62,34 +71,38 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+
                   SizedBox(height: 10),
+
+                  // Edit and Delete buttons
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      // Edit Profile button
                       ActionButton(
                         title: 'Edit Profile',
-
                         action: () {
                           print("Edit profile clicked");
                         },
                         buttonColor: Colors.black,
                       ),
+
                       SizedBox(width: 10),
+
+                      // Delete Profile button with confirmation dialog
                       ActionButton(
-                        title: 'Delete Profile', // Corrected parameter name
-                        // Removed invalid 'style' parameter
+                        title: 'Delete Profile',
                         action: () {
                           AwesomeDialog(
                             titleTextStyle: TextStyle(
                               color: Colors.black,
                               fontSize: 30,
                             ),
-                            
                             context: context,
                             dialogType: DialogType.warning,
                             animType: AnimType.rightSlide,
                             title: 'Delete Profile',
-                            desc:'Are you sure you want to delete your profile?',
+                            desc: 'Are you sure you want to delete your profile?',
                             btnCancelOnPress: () {},
                             btnOkOnPress: () {},
                           ).show();
@@ -98,7 +111,10 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+
                   SizedBox(height: 5),
+
+                  // Phone number with call button
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -111,7 +127,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () async {
-                          launchUrl(phoneNumber);
+                          launchUrl(phoneNumber); // Launch phone dialer
                         },
                         icon: Icon(Icons.phone),
                         iconSize: 30,
@@ -119,23 +135,25 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+
                   SizedBox(height: 20),
+
+                  // GridView for social media links
                   GridView.builder(
                     itemCount: myContacts.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          mainAxisSpacing: 20,
-                          crossAxisSpacing: 10,
-                        ),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 10,
+                    ),
                     itemBuilder: (BuildContext context, index) {
                       return ContactChanelCard(
                         platform: myContacts.keys.toList()[index],
                         url: myContacts.values.toList()[index],
                       );
                     },
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(), // No scrolling inside GridView
+                    shrinkWrap: true, // Take minimum space
                     primary: false,
                     padding: const EdgeInsets.symmetric(vertical: 20),
                   ),
@@ -144,7 +162,11 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
         ),
+
+        // Bottom navigation bar
         bottomNavigationBar: BottomNavBar(),
+
+        // Extend body for transparent nav bar design
         extendBody: true,
       ),
     );

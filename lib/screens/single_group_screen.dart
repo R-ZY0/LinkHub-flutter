@@ -11,19 +11,25 @@ class SingleGroupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // AppBar with custom back button and title
       appBar: AppBar(
         title: Text('Single Group'),
         leading: MyBackButton(),
       ),
+
+      // Main body content
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            // Group image with rounded corners
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image(image: AssetImage('assets/mj.jpg')),
             ),
             SizedBox(height: 10),
+
+            // "Group Members" title
             Text(
               'Group Members',
               style: TextStyle(
@@ -33,25 +39,29 @@ class SingleGroupScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
+
+            // List of group members
             Expanded(
               child: ListView.separated(
-                physics: BouncingScrollPhysics(),
+                physics: BouncingScrollPhysics(), // Smooth scrolling
                 itemBuilder: (context, index) {
-                  return ContactCard();
+                  return ContactCard(); // Display a contact card for each member
                 },
                 separatorBuilder: (context, index) {
                   return Divider(
-                    color: color3, // Customize the divider color
-                    thickness: 1.5, // Customize the thickness
-                    height: 20, // Space between items
+                    color: color3,   // Divider color between items
+                    thickness: 1.5, // Divider thickness
+                    height: 20,     // Space between dividers
                   );
                 },
-                itemCount: 15, // Replace with the actual number of members
+                itemCount: 15, // TODO: Replace with dynamic member count
               ),
             ),
           ],
         ),
       ),
+
+      // Custom bottom navigation bar
       bottomNavigationBar: BottomNavBar(
         selectedItemColor: Colors.grey,
       ),
