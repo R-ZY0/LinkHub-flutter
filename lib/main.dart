@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
          theme: appTheme,
-         home: Onboarding1Screen(),
+         home: SinupScreen(),
       );
      
     

@@ -23,10 +23,7 @@ class BottomNavBar extends StatelessWidget {
         items: const [
           BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.house), label: ''),
           BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.globe), label: ''),
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.userGroup),
-            label: '',
-          ),
+          BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.userGroup), label: '',),
           BottomNavigationBarItem(icon: Icon(FontAwesomeIcons.user), label: ''),
         ],
         currentIndex: index,

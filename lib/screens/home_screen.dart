@@ -1,3 +1,5 @@
+//eleawa
+
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -122,6 +124,9 @@ class HomeScreen extends StatelessWidget {
                           .collection('users')
                           .where('phone', isEqualTo: enteredPhoneNumber)
                           .get();
+
+
+                          
 
                       // If user found
                       if (querySnapshot.docs.isNotEmpty) {
